@@ -1,7 +1,12 @@
 (function() {
   "use strict";
-
-  io = io.connect();
+  var server = 'http://127.0.0.1:3000/';
+  // Update server var if in the query string:
+  var url = window.location.toString();
+  if (url.indexOf('?') >= 0) {
+    server = url.substring(url.indexOf('?') + 1);
+  }
+  io = io.connect(server);
 
   document.getElementById('bouton').addEventListener('click',
     function(){
